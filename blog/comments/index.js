@@ -2,6 +2,8 @@ const express = require("express");
 const uuid = require("uuid");
 const app = express();
 app.use(express.json());
+const cors = require('cors');
+app.use(cors());
 
 const commentsByPostId = {};
 
