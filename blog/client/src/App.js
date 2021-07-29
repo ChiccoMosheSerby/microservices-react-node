@@ -23,8 +23,8 @@ function App() {
   return (
     <div stayl={{ padding: "10px" }}>
       <h1>Create Post</h1>
-      <PostCreate setPosts={getPosts} />
-      {posts && <PostsList posts={posts} />}
+      <PostCreate updatePosts={()=>getPosts(setPosts)} />
+     <PostsList posts={posts} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form } from "./PostCreate.style";
 
-const PostCreate = ({ setPosts }) => {
+const PostCreate = ({ updatePosts }) => {
   const [title, setTitle] = useState("");
 
   const submitHandler = async (e) => {
@@ -13,7 +13,7 @@ const PostCreate = ({ setPosts }) => {
       (await axios.post("http://localhost:4000/posts", {
         title,
       }));
-    setPosts((prev) => [...prev, resp.data]);
+    updatePosts();
     setTitle("");
   };
   return (
