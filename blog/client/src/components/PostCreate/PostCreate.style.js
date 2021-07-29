@@ -9,6 +9,9 @@ export const Form = styled.form`
     justify-content: space-around;
     align-items:center;
     max-width: 400px;
+    margin: auto;
+    width: calc(100% - 20px);
+
     input, button {
         box-sizing: border-box;
         border-radius:4px;

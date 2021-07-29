@@ -1,32 +1,31 @@
-import React, { useState } from "react";
-import { PostCard } from './Post.style';
+import React, { useEffect, useState } from "react";
+import useCommentsUpdater from "../../hooks/useCommentsUpdater";
+import axios from "axios";
+
+import CommentCreate from "../CommentCreate/CommentCreate";
+import { PostCard } from "./Post.style";
+import CommentsList from "../CommentsList/CommentsList";
 
 const Post = ({ postData }) => {
-  const [commentContent, setCommentContent] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCommentContent("");
-  };
+  const { comments, fetchAndUpdateComments } = useCommentsUpdater(postData.id);
+
+  useEffect(() => {
+    fetchAndUpdateComments();
+  }, []);
   return (
     postData && (
       <PostCard>
         <p className="title">{postData.title}</p>
         <div className="center">
           <div className="lable">comments</div>
-          {/* <div className="comments">
-            {postData?.comments.map((c) => {
-              return <div>{c}</div>;
-            })}
-          </div> */}
-        </div>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={commentContent}
-            onChange={(e) => setCommentContent(e.target.value)}
+          <ul className="comments">
+            {comments?.length !== 0 && <CommentsList comments={comments} />}
+          </ul>
+          <CommentCreate
+            postId={postData.id}
+            fetchAndUpdateComments={() => fetchAndUpdateComments()}
           />
-          <button type="submit">COMMENT</button>
-        </form>
+        </div>
       </PostCard>
     )
   );

@@ -2,8 +2,9 @@ const express = require("express");
 const uuid = require("uuid");
 const app = express();
 app.use(express.json());
-const cors = require('cors');
+const cors = require("cors");
 app.use(cors());
+const axios = require("axios");
 
 const commentsByPostId = {};
 
@@ -13,7 +14,7 @@ app.get("/posts/:id/comments", (req, res) => {
 });
 
 // add comment by post id
-app.post("/posts/:id/comments", (req, res) => {
+app.post("/posts/:id/comments", async (req, res) => {
   const commentId = uuid.v4();
   const comentedPostId = req.params.id;
   const { content } = req.body;
@@ -21,6 +22,15 @@ app.post("/posts/:id/comments", (req, res) => {
   const comments = commentsByPostId[comentedPostId] || [];
   comments.push({ id: commentId, content });
   commentsByPostId[comentedPostId] = comments;
+
+  const x = await axios.post("http://localhost:4005/events", {
+    type: "CommentsCreated",
+    data: {
+      id: commentId,
+      content,
+      postId: req.params.id,
+    },
+  });
 
   res.send({
     postID: comentedPostId,
@@ -33,6 +43,11 @@ app.post("/posts/:id/comments", (req, res) => {
         commentsByPostId[comentedPostId].length - 1
       ].content,
   });
+});
+
+app.post("/events", (req, res) => {
+  console.log("recived comment", req.body.type);
+  res.send({ status: "OK" });
 });
 
 app.listen(4001, () => {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const PostCard = styled.div`
+  min-width: 300px  ;
   padding: 15px;
   height: 400px;
   display: flex;
@@ -11,6 +12,8 @@ export const PostCard = styled.div`
   color: #fff;
   border-radius: 4px;
   margin: 4px;
+  margin-right: 30px;
+  position: relative;
   .title {
     border-bottom: 1px solid lightgray;
     text-align: center;
@@ -19,28 +22,14 @@ export const PostCard = styled.div`
     color: lightgray;
     border-bottom: solid lightgray 1px;
   }
-
-  form {
-    margin-top: auto;
-  }
-  input,
-  button {
-    margin-top: 3px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 5px;
-    width: 100%;
-    outline: none;
-    display: block;
-    border: solid 1px lightgray;
-  }
-
   .comments {
     overflow-y: auto;
-    height: 250px;
     width: 100%;
+    height: 100%;
+    display: block;
   }
   .center {
     width: 100%;
+    height: 100%;
   }
 `;

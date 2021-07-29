@@ -7,9 +7,7 @@ const PostCreate = ({ updatePosts }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    let resp =
-      title !== "" &&
+    title !== "" &&
       (await axios.post("http://localhost:4000/posts", {
         title,
       }));
