@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 // import useCommentsUpdater from "../../hooks/useCommentsUpdater";
 
 import CommentCreate from "../CommentCreate/CommentCreate";
@@ -17,10 +17,7 @@ const Post = ({ postData }) => {
         <p className="title">{postData.title}</p>
         <div className="center">
           <div className="lable">comments</div>
-          <ul className="comments">
-              <CommentsList postId={postData.id} />
-            
-          </ul>
+            <CommentsList comments={postData.comments} />
           <CommentCreate
             postId={postData.id}
             // fetchAndUpdateComments={() => fetchAndUpdateComments()}

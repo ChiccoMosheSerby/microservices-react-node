@@ -29,6 +29,7 @@ app.post("/posts/:id/comments", async (req, res) => {
     data: {
       id: commentId,
       content,
+      status:'panding',
       postId: req.params.id,
     },
   });
