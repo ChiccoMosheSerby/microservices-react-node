@@ -1,23 +1,23 @@
-import  { useState } from "react";
-import axios from "axios";
+// import  { useState } from "react";
+// import axios from "axios";
 
-const usePostsUpdater = () => {
-  const [posts, setPosts] = useState([]);
+// const usePostsUpdater = () => {
+//   const [posts, setPosts] = useState([]);
 
-  const fetchAndUpdatePosts = async () => {
-    let res = await axios.get("http://localhost:4000/posts");
-    // console.log("App PostsList", res.data);
-    const postsArray = Object.values(res.data);
+//   const fetchAndUpdatePosts = async () => {
+//     let res = await axios.get("http://localhost:4002/posts");
+//     // console.log("App PostsList", res.data);
+//     const postsArray = Object.values(res.data);
 
-    console.log("postsArray", postsArray);
+//     console.log("postsArray", postsArray);
 
-    setPosts(postsArray);
-  };
+//     setPosts(postsArray);
+//   };
 
-  return {
-    posts,
-    fetchAndUpdatePosts,
-  };
-};
+//   return {
+//     posts,
+//     fetchAndUpdatePosts,
+//   };
+// };
 
-export default usePostsUpdater;
+// export default usePostsUpdater;

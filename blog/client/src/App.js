@@ -1,27 +1,19 @@
-import React, { useEffect } from "react";
-import PostsList from "./components/PostsList/PostsList";
+import React from "react";
 import PostCreate from "./components/PostCreate/PostCreate";
-import usePostsUpdater from "./hooks/usePostsUpdater";
+import PostList from "./components/PostsList/PostsList";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledApp = styled.div`
-padding:10px;
-  
+  background-color: #f1f3f4;
 `;
-function App() {
-  const { posts, fetchAndUpdatePosts } = usePostsUpdater();
-
-  useEffect(() => {
-    fetchAndUpdatePosts();
-  }, []);
-
+const App = () => {
   return (
-    <StyledApp >
-      <PostCreate updatePosts={() => fetchAndUpdatePosts()} />
-      <PostsList posts={posts} />
+    <StyledApp>
+      <PostCreate />
+      <hr />
+      <PostList />
     </StyledApp>
   );
-}
-
+};
 export default App;

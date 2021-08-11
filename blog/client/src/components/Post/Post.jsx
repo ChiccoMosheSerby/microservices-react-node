@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import useCommentsUpdater from "../../hooks/useCommentsUpdater";
-import axios from "axios";
+import React  from "react";
+// import useCommentsUpdater from "../../hooks/useCommentsUpdater";
 
 import CommentCreate from "../CommentCreate/CommentCreate";
 import { PostCard } from "./Post.style";
 import CommentsList from "../CommentsList/CommentsList";
 
 const Post = ({ postData }) => {
-  const { comments, fetchAndUpdateComments } = useCommentsUpdater(postData.id);
+  // const { comments, fetchAndUpdateComments } = useCommentsUpdater(postData.id);
 
-  useEffect(() => {
-    fetchAndUpdateComments();
-  }, []);
+  // useEffect(() => {
+  //   fetchAndUpdateComments();
+  // }, []);
   return (
     postData && (
       <PostCard>
@@ -19,11 +18,12 @@ const Post = ({ postData }) => {
         <div className="center">
           <div className="lable">comments</div>
           <ul className="comments">
-            {comments?.length !== 0 && <CommentsList comments={comments} />}
+              <CommentsList postId={postData.id} />
+            
           </ul>
           <CommentCreate
             postId={postData.id}
-            fetchAndUpdateComments={() => fetchAndUpdateComments()}
+            // fetchAndUpdateComments={() => fetchAndUpdateComments()}
           />
         </div>
       </PostCard>

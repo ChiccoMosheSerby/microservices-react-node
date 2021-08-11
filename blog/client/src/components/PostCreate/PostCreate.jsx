@@ -11,7 +11,7 @@ const PostCreate = ({ updatePosts }) => {
       (await axios.post("http://localhost:4000/posts", {
         title,
       }));
-    updatePosts();
+    // updatePosts();
     setTitle("");
   };
   return (

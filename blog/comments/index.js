@@ -1,30 +1,31 @@
 const express = require("express");
-const uuid = require("uuid");
-const app = express();
-app.use(express.json());
+const bodyParser = require("body-parser");
+const { randomBytes } = require("crypto");
 const cors = require("cors");
-app.use(cors());
 const axios = require("axios");
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 
 const commentsByPostId = {};
 
-// get comments by post id
 app.get("/posts/:id/comments", (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
 });
 
-// add comment by post id
 app.post("/posts/:id/comments", async (req, res) => {
-  const commentId = uuid.v4();
-  const comentedPostId = req.params.id;
-  const { content } = req.body;
+  const commentId = randomBytes(4).toString("hex");
+  const { content } = req.body; 
 
-  const comments = commentsByPostId[comentedPostId] || [];
+  const comments = commentsByPostId[req.params.id] || [];
+
   comments.push({ id: commentId, content });
-  commentsByPostId[comentedPostId] = comments;
 
-  const x = await axios.post("http://localhost:4005/events", {
-    type: "CommentsCreated",
+  commentsByPostId[req.params.id] = comments;
+
+  await axios.post("http://localhost:4005/events", {
+    type: "CommentCreated",
     data: {
       id: commentId,
       content,
@@ -32,24 +33,15 @@ app.post("/posts/:id/comments", async (req, res) => {
     },
   });
 
-  res.send({
-    postID: comentedPostId,
-    commentID:
-      commentsByPostId[comentedPostId][
-        commentsByPostId[comentedPostId].length - 1
-      ].id,
-    commentContent:
-      commentsByPostId[comentedPostId][
-        commentsByPostId[comentedPostId].length - 1
-      ].content,
-  });
+  res.status(201).send(comments);
 });
 
 app.post("/events", (req, res) => {
-  console.log("recived comment", req.body.type);
-  res.send({ status: "OK" });
+  console.log("Event Received", req.body.type);
+
+  res.send({});
 });
 
 app.listen(4001, () => {
-  console.log("comments service - listening on 4001");
+  console.log("Listening on 4001");
 });

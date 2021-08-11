@@ -15,7 +15,7 @@ const CommentCreate = ({ postId, fetchAndUpdateComments }) => {
     // updatePosts();
     console.log(res.data);
     setCommentContent("");
-    fetchAndUpdateComments();
+    // fetchAndUpdateComments();
   };
   return (
     <Form onSubmit={submitHandler}>
