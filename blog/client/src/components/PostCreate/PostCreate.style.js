@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
     padding:10px;
-    border:solid lightgray 1px;
+    border:solid #1e88da 1px;
     border-radius:4px;
     display:flex;
     flex-direction:column;
@@ -19,13 +19,13 @@ export const Form = styled.form`
         width:90%;
         outline:none;
         display:block;
-        border:solid 1px lightgray;
+        border:solid 1px #1e88da;
         margin:5px;
     }
     button{
         cursor: pointer;
         :hover{
-            background-color: #fff;
+            background-color: #1e88da;
         }
     }
 `;

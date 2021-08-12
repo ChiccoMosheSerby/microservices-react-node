@@ -15,12 +15,12 @@ export const PostCard = styled.div`
   margin-right: 30px;
   position: relative;
   .title {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #1e88da;
     text-align: center;
   }
   .lable {
     color: lightgray;
-    border-bottom: solid lightgray 1px;
+    border-bottom: solid #1e88da 1px;
   }
   .comments {
     overflow-y: auto;

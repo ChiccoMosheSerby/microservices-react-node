@@ -16,12 +16,12 @@ export const Form = styled.form`
     width: 100%;
     outline: none;
     display: block;
-    border: solid 1px lightgray;
+    border: solid 1px #1e88da;
   }
   button {
     cursor: pointer;
     :hover{
-      color:#fff;
+      color:#1e88da;
       background-color: #1f1f1f;
     }
   }

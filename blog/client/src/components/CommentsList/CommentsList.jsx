@@ -5,6 +5,35 @@ const UList = styled.ul`
   list-style-type: square;
   padding: 0;
   width: 100%;
+  overflow-y:auto;
+  max-height: 230px;
+  ::-webkit-scrollbar {
+      margin-right: 2px;
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+      background-color: #fff;
+    }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+      background: #1e88da;
+      border-radius: 10px;
+            max-height: 94px;
+
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(215, 215, 215, 1);
+    }
+
+    
+    /* firefox */
+  /* //scrollbar-color: auto;
+  //scrollbar-color: dark;
+  //scrollbar-color: light; */
+  /* scrollbar-color:  rgba(215, 215, 215, 1) #fff; */
 `;
 
 const Li = styled.li`
