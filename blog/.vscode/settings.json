@@ -1,4 +1,49 @@
 {
+  "restoreTerminals.terminals": [
+    {
+      "splitTerminals": [
+        {
+          "name": "client",
+          "commands": ["cd client","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [{
+          "name": "posts",
+          "commands": ["cd posts","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [ {
+          "name": "comments",
+          "commands": ["cd comments","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [{
+          "name": "event-bus",
+          "commands": ["cd event-bus","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [ {
+          "name": "query",
+          "commands": ["cd query","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [ {
+          "name": "git",
+          "commands": []
+        }
+      ]
+    }
+    ],
     "files.exclude": {
         "**/node_modules": false
     },
