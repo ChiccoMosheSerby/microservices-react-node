@@ -5,31 +5,29 @@ const UList = styled.ul`
   list-style-type: square;
   padding: 0;
   width: 100%;
-  overflow-y:auto;
+  overflow-y: auto;
   max-height: 230px;
   ::-webkit-scrollbar {
-      margin-right: 2px;
-      width: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-      background-color: #fff;
-    }
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-      background: #1e88da;
-      border-radius: 10px;
-            max-height: 94px;
+    margin-right: 2px;
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #1e88da;
+    border-radius: 10px;
+    max-height: 94px;
+  }
 
-    }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(215, 215, 215, 1);
+  }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(215, 215, 215, 1);
-    }
-
-    
-    /* firefox */
+  /* firefox */
   /* //scrollbar-color: auto;
   //scrollbar-color: dark;
   //scrollbar-color: light; */
@@ -61,15 +59,16 @@ const Li = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: .8rem;
+    font-size: 0.8rem;
     border-left: gray 1px solid;
     padding-left: 3px;
-
   }
 `;
 
 const CommentsList = ({ comments = [] }) => {
   const renderedComments = comments.map((comment) => {
+    console.log("comment list item", comment);
+
     return (
       <Li key={comment.id} status={comment?.status}>
         <div className="content">{comment?.content}</div>

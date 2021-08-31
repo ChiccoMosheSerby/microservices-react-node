@@ -3,14 +3,15 @@ import axios from "axios";
 import { Form } from "./CommentCreate.style";
 
 const CommentCreate = ({ postId, fetchAndUpdateComments }) => {
-  const [commentContent, setCommentContent] = useState("");
+  const [content, setCommentContent] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    console.log('contenthhhhhhhhhhhhh',content);
     let res =
-      commentContent !== "" &&
+    content !== "" &&
       (await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
-        content: commentContent,
+        content,
       }));
     // updatePosts();
     console.log(res.data);
@@ -21,7 +22,7 @@ const CommentCreate = ({ postId, fetchAndUpdateComments }) => {
     <Form onSubmit={submitHandler}>
       <input
         type="text"
-        value={commentContent}
+        value={content}
         onChange={(e) => setCommentContent(e.target.value)}
       />
       <button type="submit">COMMENT</button>

@@ -38,6 +38,13 @@
     },
     {
       "splitTerminals": [ {
+          "name": "moderation",
+          "commands": ["cd moderation","npm start"]
+        }
+      ]
+    },
+    {
+      "splitTerminals": [ {
           "name": "git",
           "commands": []
         }
